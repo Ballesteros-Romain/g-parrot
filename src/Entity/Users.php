@@ -38,9 +38,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Avis::class)]
     private Collection $avis;
 
+    #[ORM\ManyToOne(inversedBy: 'parent')]
+    private ?Services $services = null;
+
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Horaires::class)]
+    private Collection $horaires;
+
     public function __construct()
     {
         $this->avis = new ArrayCollection();
+        $this->horaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,6 +156,48 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($avi->getParent() === $this) {
                 $avi->setParent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getServices(): ?Services
+    {
+        return $this->services;
+    }
+
+    public function setServices(?Services $services): static
+    {
+        $this->services = $services;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Horaires>
+     */
+    public function getHoraires(): Collection
+    {
+        return $this->horaires;
+    }
+
+    public function addHoraire(Horaires $horaire): static
+    {
+        if (!$this->horaires->contains($horaire)) {
+            $this->horaires->add($horaire);
+            $horaire->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHoraire(Horaires $horaire): static
+    {
+        if ($this->horaires->removeElement($horaire)) {
+            // set the owning side to null (unless already changed)
+            if ($horaire->getParent() === $this) {
+                $horaire->setParent(null);
             }
         }
 
