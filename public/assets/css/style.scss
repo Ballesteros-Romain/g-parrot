@@ -1,0 +1,421 @@
+$jaune: #fdba3d;
+$blc: white;
+$blk: black;
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+@import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap");
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Julius Sans One", sans-serif;
+}
+// ===================================== HEADER ===========================================
+// photo de la page vehicule occasion=========================================
+.p-vehicule-occ {
+  width: 100%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+@media screen and (min-width: 991px) {
+  .p-vehicule-occ {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+header {
+  border-bottom: 4px solid $jaune;
+  padding-bottom: 30px;
+}
+
+li {
+  list-style: none;
+}
+
+.logo {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.navbar {
+  width: 85%;
+  margin: auto;
+  border-bottom: 2px dashed $blk;
+  border-top: 2px dashed $blk;
+  padding: 10px;
+}
+.connexion {
+  background-color: $jaune;
+  color: $blc;
+  @include rounded(3px);
+  padding: 5px;
+  position: absolute;
+  border: none;
+  font-size: larger;
+  &:hover {
+    background-color: darken($color: $jaune, $amount: 15);
+  }
+}
+@media screen and (max-width: 991px) {
+  .img-top-pc {
+    display: none;
+  }
+  .texte img {
+    display: none;
+  }
+  .btn2 {
+    left: 10%;
+  }
+}
+.img-top-pc {
+  width: 80%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 70px;
+}
+@media screen and (min-width: 991px) {
+  .connexion {
+    top: 230px;
+    right: 180px;
+  }
+}
+
+.toggle {
+  height: 30px;
+  width: 30px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  & a {
+    color: $jaune;
+  }
+  & a:hover {
+    color: $blc;
+  }
+}
+.menu > li {
+  padding: 5px 10px;
+  margin: 5px 0px;
+  text-align: center;
+  &:hover {
+    background: $jaune;
+    color: $blc;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .toggle {
+    display: block;
+    cursor: pointer;
+  }
+  .ouvrir {
+    display: block;
+  }
+  .fermer {
+    display: none;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+  }
+  .open .ouvrir {
+    display: none;
+  }
+  .open .fermer {
+    display: block;
+  }
+  .menu {
+    flex-direction: column;
+    margin-top: 20px;
+    background: $jaune;
+    color: $blc;
+    width: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    display: none;
+  }
+  .menu:hover {
+    background: darken($color: $jaune, $amount: 15);
+    color: white;
+  }
+  .open .menu {
+    display: flex;
+    font-size: 1.4rem;
+  }
+  .menu li a {
+    color: $blc;
+    padding-left: -30px;
+  }
+  ul.menu {
+    padding-left: 0;
+  }
+}
+// ========================================== MAIN ====================================================
+
+// ========================================== SECTION 1 ================================================
+h2 {
+  color: $jaune;
+  text-align: center;
+  margin-top: 70px;
+  padding-top: 70px;
+}
+.trait {
+  width: 100px;
+  height: 4px;
+  background-color: black;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 50px;
+  @include rounded(3px);
+}
+.texte {
+  display: flex;
+  margin-top: 60px;
+  & > p {
+    text-justify: auto;
+    text-align: center;
+    line-height: 200%;
+    margin: 33px;
+  }
+  & img {
+    margin-right: 50px;
+    width: 500px;
+    height: 400px;
+  }
+}
+.btn2 {
+  background: $jaune;
+  color: $blc;
+  @include rounded(3px);
+  padding: 5px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  font-size: larger;
+  &:hover {
+    background-color: darken($color: $jaune, $amount: 15);
+  }
+}
+// =============================================== SECTION 2====================================================
+
+.bg-blk {
+  background: $blk;
+  color: $jaune;
+  margin-top: 100px;
+  height: 100%;
+  padding-bottom: 80px;
+}
+.container {
+  text-align: center;
+  padding-top: 10px;
+}
+.card {
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  background-color: $jaune;
+  width: 60%;
+  @include rounded(3px);
+  height: 100%;
+  padding: 5px 10px 15px 10px;
+  & img {
+    padding: 10px;
+    width: 90%;
+    height: 50%;
+  }
+}
+h3 {
+  color: $blk;
+  padding-bottom: 10px;
+}
+@media screen and (min-width: 991px) {
+  .container {
+    display: flex;
+  }
+  .card {
+    width: 20%;
+    height: 100%;
+    & img {
+      height: 220px;
+      width: 90%;
+    }
+  }
+}
+
+// ====================================== SECTION  ===========================================
+.avis {
+  text-align: center;
+  margin-top: 70px;
+  & a {
+    text-decoration: underline;
+    color: $blk;
+  }
+  & p {
+    margin-top: 100px;
+  }
+  //   ========================================== FOOTER ====================================================
+}
+footer p {
+  padding-top: 50px;
+  text-align: center;
+}
+.trait2 {
+  width: 100px;
+  height: 4px;
+  background-color: $blc;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 50px;
+  @include rounded(3px);
+}
+@media screen and (min-width: 991px) {
+  .footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .trait2 {
+    display: none;
+  }
+  footer img {
+    border: 1px solid $jaune;
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 991px) {
+  footer img {
+    display: none;
+  }
+}
+// PAGE VEHICULE OCCASION ===============================================================
+.trait3 {
+  width: 100px;
+  height: 4px;
+  background-color: $jaune;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  margin-top: 50px;
+  @include rounded(3px);
+}
+.btn3 {
+  background: $jaune;
+  color: $blk;
+  @include rounded(3px);
+  padding: 10px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  font-size: larger;
+  &:hover {
+    background-color: darken($color: $jaune, $amount: 15);
+  }
+}
+.center {
+  text-align: center;
+  margin: 80px 0;
+}
+@media screen and (min-width: 991px) {
+  .card-occasion {
+    height: 400px;
+  }
+}
+// PAGE MECANIQUE ===========================================================================
+.photo-mecanique {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: 400px;
+  width: 600px;
+  margin-top: 80px;
+}
+@media screen and (max-width: 991px) {
+  .photo-mecanique {
+    display: none;
+  }
+}
+
+// =============================== FORMULAIRE ===============================================+
+.form-i {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  margin-bottom: 15px;
+  border: 2px solid $blk;
+  @include rounded(3px);
+}
+label {
+  color: $jaune;
+}
+// ============================================= filtre de recherche ==============================================
+.filter {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 10px;
+  border: 1px solid $jaune;
+  border-radius: 5px;
+}
+
+.filter h2 {
+  color: $blk;
+  margin-top: -60px;
+  margin-bottom: 60px;
+}
+
+.filter-row {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#results {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.btn-filter {
+  margin-bottom: 10px;
+  margin-top: 15px;
+  width: 30%;
+}
+#km,
+#classe,
+#annee,
+#prix {
+  border: 1px solid $jaune;
+}
+// ========================================= PAGES AVIS ==================================================
+.form-group {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+#avis-form button {
+  margin-top: 20px;
+}
+textarea {
+  resize: none;
+  min-width: 300px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 400px;
+  margin-left: -26%;
+  margin-top: 10px;
+}
