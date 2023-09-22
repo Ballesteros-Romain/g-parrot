@@ -25,13 +25,15 @@ class Cars
     #[ORM\Column]
     private ?int $annee = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
-    private ?string $price = null;
+    #[ORM\Column]
+    private ?int $price = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Images::class)]
+    // #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Images::class)]
+    // private Collection $images;
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Images::class, orphanRemoval: true, cascade:['persist'])]
     private Collection $images;
 
     public function __construct()
@@ -92,17 +94,17 @@ class Cars
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
+    // public function getImage(): ?string
+    // {
+    //     return $this->image;
+    // }
 
-    public function setImage(string $image): static
-    {
-        $this->image = $image;
+    // public function setImage(string $image): static
+    // {
+    //     $this->image = $image;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Images>
