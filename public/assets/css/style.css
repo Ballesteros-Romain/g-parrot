@@ -1,11 +1,3 @@
-$jaune: #fdba3d;
-$blc: white;
-$blk: black;
-@mixin rounded($radius) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  border-radius: $radius;
-}
 @import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap");
 body {
   padding: 0;
@@ -13,24 +5,24 @@ body {
   box-sizing: border-box;
   font-family: "Julius Sans One", sans-serif;
 }
-// ===================================== HEADER ===========================================
-// photo de la page vehicule occasion=========================================
+
 .p-vehicule-occ {
   width: 100%;
   margin-left: 50%;
   transform: translateX(-50%);
 }
+
 @media screen and (min-width: 991px) {
   .p-vehicule-occ {
     display: none;
   }
 }
-
 a {
   text-decoration: none;
 }
+
 header {
-  border-bottom: 4px solid $jaune;
+  border-bottom: 4px solid #fdba3d;
   padding-bottom: 30px;
 }
 
@@ -43,26 +35,29 @@ li {
   left: 50%;
   transform: translateX(-50%);
 }
+
 .navi {
   width: 85%;
   margin: auto;
-  border-bottom: 2px dashed $blk;
-  border-top: 2px dashed $blk;
+  border-bottom: 2px dashed black;
+  border-top: 2px dashed black;
   padding: 10px;
 }
+
 .connexion {
-  background-color: $jaune;
-  color: $blc;
-  @include rounded(3px);
+  background-color: #fdba3d;
+  color: white;
+  border-radius: 3px;
   padding: 5px;
   position: absolute;
   border: none;
   font-size: larger;
   top: 508px;
-  &:hover {
-    background-color: darken($color: $jaune, $amount: 15);
-  }
 }
+.connexion:hover {
+  background-color: #eb9a02;
+}
+
 @media screen and (max-width: 991px) {
   .img-top-pc {
     display: none;
@@ -80,13 +75,13 @@ li {
   transform: translateX(-50%);
   margin-top: 70px;
 }
+
 @media screen and (min-width: 991px) {
   .connexion {
     top: 230px;
     right: 180px;
   }
 }
-
 .toggle {
   height: 30px;
   width: 30px;
@@ -99,26 +94,28 @@ li {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  & a {
-    color: $jaune;
-  }
-  & a:hover {
-    color: $blc;
-  }
 }
+.menu a {
+  color: #fdba3d;
+}
+.menu a:hover {
+  color: white;
+}
+
 .menu > li {
   padding: 5px 10px;
   margin: 5px 0px;
   text-align: center;
-  &:hover {
-    background: $jaune;
-    color: $blc;
-    padding: 5px 10px;
-    border-radius: 3px;
-  }
 }
+.menu > li:hover {
+  background: #fdba3d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
 #scrollToDown {
-  color: $jaune;
+  color: #fdba3d;
 }
 
 @media all and (max-width: 991px) {
@@ -144,8 +141,8 @@ li {
   .menu {
     flex-direction: column;
     margin-top: 20px;
-    background: $jaune;
-    color: $blc;
+    background: #fdba3d;
+    color: white;
     width: 50%;
     margin-left: 50%;
     transform: translateX(-50%);
@@ -153,7 +150,7 @@ li {
     display: none;
   }
   .menu:hover {
-    background: darken($color: $jaune, $amount: 15);
+    background: #eb9a02;
     color: white;
   }
   .open .menu {
@@ -161,25 +158,23 @@ li {
     font-size: 1.4rem;
   }
   .menu li a {
-    color: $blc;
+    color: white;
     padding-left: -30px;
   }
   ul.menu {
     padding-left: 0;
   }
   #scrollToDown {
-    color: $blc;
+    color: white;
   }
 }
-// ========================================== MAIN ====================================================
-
-// ========================================== SECTION 1 ================================================
 h2 {
-  color: $jaune;
+  color: #fdba3d;
   text-align: center;
   margin-top: 70px;
   padding-top: 70px;
 }
+
 .trait {
   width: 100px;
   height: 4px;
@@ -188,68 +183,73 @@ h2 {
   transform: translateX(-50%);
   display: block;
   margin-top: 50px;
-  @include rounded(3px);
+  border-radius: 3px;
 }
+
 .texte {
   display: flex;
   margin-top: 60px;
-  & > p {
-    text-justify: auto;
-    text-align: center;
-    line-height: 200%;
-    margin: 33px;
-  }
-  & img {
-    margin-right: 50px;
-    width: 500px;
-    height: 400px;
-  }
 }
+.texte > p {
+  text-justify: auto;
+  text-align: center;
+  line-height: 200%;
+  margin: 33px;
+}
+.texte img {
+  margin-right: 50px;
+  width: 500px;
+  height: 400px;
+}
+
 .btn2 {
-  background: $jaune;
-  color: $blc;
-  @include rounded(3px);
+  background: #fdba3d;
+  color: white;
+  border-radius: 3px;
   padding: 5px;
   margin-left: 50%;
   transform: translateX(-50%);
   border: none;
   font-size: larger;
-  &:hover {
-    background-color: darken($color: $jaune, $amount: 15);
-  }
 }
-// =============================================== SECTION 2====================================================
+.btn2:hover {
+  background-color: #eb9a02;
+}
 
 .bg-blk {
-  background: $blk;
-  color: $jaune;
+  background: black;
+  color: #fdba3d;
   margin-top: 100px;
   height: 100%;
   padding-bottom: 80px;
 }
+
 .container {
   text-align: center;
   padding-top: 10px;
 }
+
 .card {
   text-align: center;
   margin: auto;
   margin-top: 50px;
-  background-color: $jaune;
+  background-color: #fdba3d;
   width: 60%;
-  @include rounded(3px);
+  border-radius: 3px;
   height: 100%;
   padding: 5px 10px 15px 10px;
-  & img {
-    padding: 10px;
-    width: 90%;
-    height: 50%;
-  }
 }
+.card img {
+  padding: 10px;
+  width: 90%;
+  height: 50%;
+}
+
 h3 {
-  color: $blk;
+  color: black;
   padding-bottom: 10px;
 }
+
 @media screen and (min-width: 991px) {
   .container {
     display: flex;
@@ -257,40 +257,40 @@ h3 {
   .card {
     width: 20%;
     height: 100%;
-    & img {
-      height: 220px;
-      width: 90%;
-    }
+  }
+  .card img {
+    height: 220px;
+    width: 90%;
   }
 }
-
-// ====================================== SECTION  ===========================================
 .avis {
   text-align: center;
   margin-top: 70px;
-  & a {
-    text-decoration: underline;
-    color: $blk;
-  }
-  & p {
-    margin-top: 100px;
-  }
-  //   ========================================== FOOTER ====================================================
 }
+.avis a {
+  text-decoration: underline;
+  color: black;
+}
+.avis p {
+  margin-top: 100px;
+}
+
 footer p {
   padding-top: 50px;
   text-align: center;
 }
+
 .trait2 {
   width: 100px;
   height: 4px;
-  background-color: $blc;
+  background-color: white;
   margin-left: 50%;
   transform: translateX(-50%);
   display: block;
   margin-top: 50px;
-  @include rounded(3px);
+  border-radius: 3px;
 }
+
 @media screen and (min-width: 991px) {
   .footer {
     display: flex;
@@ -301,7 +301,7 @@ footer p {
     display: none;
   }
   footer img {
-    border: 1px solid $jaune;
+    border: 1px solid #fdba3d;
     margin-top: 50px;
   }
 }
@@ -310,40 +310,41 @@ footer p {
     display: none;
   }
 }
-// PAGE VEHICULE OCCASION ===============================================================
 .trait3 {
   width: 100px;
   height: 4px;
-  background-color: $jaune;
+  background-color: #fdba3d;
   margin-left: 50%;
   transform: translateX(-50%);
   display: block;
   margin-top: 50px;
-  @include rounded(3px);
+  border-radius: 3px;
 }
+
 .btn3 {
-  background: $jaune;
-  color: $blk;
-  @include rounded(3px);
+  background: #fdba3d;
+  color: black;
+  border-radius: 3px;
   padding: 10px;
   margin-left: 50%;
   transform: translateX(-50%);
   border: none;
   font-size: larger;
-  &:hover {
-    background-color: darken($color: $jaune, $amount: 15);
-  }
 }
+.btn3:hover {
+  background-color: #eb9a02;
+}
+
 .center {
   text-align: center;
   margin: 80px 0;
 }
+
 @media screen and (min-width: 991px) {
   .card-occasion {
     height: 400px;
   }
 }
-// PAGE MECANIQUE ===========================================================================
 .photo-mecanique {
   margin-left: 50%;
   transform: translateX(-50%);
@@ -351,38 +352,39 @@ footer p {
   width: 600px;
   margin-top: 80px;
 }
+
 @media screen and (max-width: 991px) {
   .photo-mecanique {
     display: none;
   }
 }
-
-// =============================== FORMULAIRE ===============================================+
 .form-i {
   margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 input {
   margin-bottom: 15px;
-  border: 2px solid $blk;
-  @include rounded(3px);
+  border: 2px solid black;
+  border-radius: 3px;
 }
+
 label {
-  color: $jaune;
+  color: #fdba3d;
 }
-// ============================================= filtre de recherche ==============================================
+
 .filter {
   max-width: 400px;
   margin: 80px auto;
   padding: 10px;
-  border: 1px solid $jaune;
+  border: 1px solid #fdba3d;
   border-radius: 5px;
 }
 
 .filter h2 {
-  color: $blk;
+  color: black;
   margin-top: -60px;
   margin-bottom: 60px;
 }
@@ -398,25 +400,29 @@ label {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
 .btn-filter {
   margin-bottom: 10px;
   margin-top: 15px;
   width: 30%;
 }
+
 #km,
 #classe,
 #annee,
 #prix {
-  border: 1px solid $jaune;
+  border: 1px solid #fdba3d;
 }
-// ========================================= PAGES AVIS ==================================================
+
 .form-group {
   margin-left: 50%;
   transform: translateX(-50%);
 }
+
 #avis-form button {
   margin-top: 20px;
 }
+
 textarea {
   resize: none;
   min-width: 300px;
@@ -425,4 +431,4 @@ textarea {
   max-height: 400px;
   margin-left: -26%;
   margin-top: 10px;
-}
+}/*# sourceMappingURL=style.css.map */
