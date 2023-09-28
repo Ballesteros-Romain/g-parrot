@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CarsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CarsRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Filesystem\Filesystem;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Entity\Images;
 
 #[ORM\Entity(repositoryClass: CarsRepository::class)]
 class Cars
@@ -28,17 +30,17 @@ class Cars
     #[ORM\Column]
     private ?int $price = null;
 
-    // #[ORM\Column(length: 255)]
-    // private ?string $image = null;
+    #[ORM\Column(type: 'string')]
+    private ?string $image;
 
     // #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Images::class)]
     // private Collection $images;
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Images::class, orphanRemoval: true, cascade:['persist'])]
-    private Collection $images;
+    // #[ORM\OneToMany(mappedBy: 'car', targetEntity: Images::class, orphanRemoval: true, cascade:['persist'])]
+    // private Collection $images;
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
+        // $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,45 +96,49 @@ class Cars
         return $this;
     }
 
-    // public function getImage(): ?string
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+       public function removeImage()
+    {
+        $this->image = null;
+    }
+
+    // /**
+    //  * @return Collection<int, Images>
+    //  */
+    // public function getImages(): Collection
     // {
-    //     return $this->image;
+    //     return $this->images;
     // }
 
-    // public function setImage(string $image): static
+    // public function addImage(Images $image): static
     // {
-    //     $this->image = $image;
+    //     if (!$this->images->contains($image)) {
+    //         $this->images->add($image);
+    //         $image->setParent($this);
+    //     }
 
     //     return $this;
     // }
 
-    /**
-     * @return Collection<int, Images>
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
+    // public function removeImage(Images $image): static
+    // {
+    //     if ($this->images->removeElement($image)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($image->getParent() === $this) {
+    //             $image->setParent(null);
+    //         }
+    //     }
 
-    public function addImage(Images $image): static
-    {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->setParent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): static
-    {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getParent() === $this) {
-                $image->setParent(null);
-            }
-        }
-
-        return $this;
-    }
+    //     return $this;
+    // }
 }

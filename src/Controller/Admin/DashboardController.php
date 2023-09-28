@@ -19,9 +19,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
+
 
 class DashboardController extends AbstractDashboardController
 {
+    #[IsGranted('ROLE_USER')]
+
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -39,13 +44,18 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Cars', 'fa-solid fa-car', Cars::class);
+        yield MenuItem::linkToCrud('Voiture', 'fa-solid fa-car', Cars::class);
         yield MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Avis::class);
         yield MenuItem::linkToCrud('formulaire', 'fa-brands fa-wpforms', Formulaire::class);
         yield MenuItem::linkToCrud('horaires', 'fa-solid fa-clock', Horaires::class);
-        yield MenuItem::linkToCrud('roles', 'fa-solid fa-user', Roles::class);
+        // yield MenuItem::linkToCrud('roles', 'fa-solid fa-user', Roles::class);
         yield MenuItem::linkToCrud('Services', 'fa-solid fa-briefcase', Services::class);
         yield MenuItem::linkToCrud('SousServices', 'fa-solid fa-briefcase', SousServices::class);
-        yield MenuItem::linkToCrud('Users', 'fa-solid fa-users', Users::class);
+        // yield MenuItem::linkToCrud('Users', 'fa-solid fa-users', Users::class);
+    
+        if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', Users::class);
+
+        }
     }
 }
