@@ -28,11 +28,12 @@ class UsersCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             EmailField::new('Email'),
-            TextField::new('password')
-            ->setLabel('Mot de passe')
-            ->setFormType(PasswordType::class)
-            ->hideOnIndex(),
-            TextField::new('Rôle')
+            PasswordField::new('password')
+            // TextField::new('password')
+            // ->setLabel('Mot de passe')
+            // ->setFormType(PasswordType::class)
+            // ->hideOnIndex(),
+            // TextField::new('roles')
         ];
             
     }
