@@ -38,12 +38,13 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Garage V.Parrot');
+            ->setTitle('Garage V.Parrot')
+            ->setLocales(['fr']);
     }
 
     public function configureMenuItems(): iterable
     {
-        // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        // yield MenuItem::linkToDashboard('retour site', 'fa fa-home', 'home_');
         yield MenuItem::linkToCrud('Voiture', 'fa-solid fa-car', Cars::class);
         yield MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Avis::class);
         yield MenuItem::linkToCrud('formulaire', 'fa-brands fa-wpforms', Formulaire::class);

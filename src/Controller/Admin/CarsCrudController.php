@@ -33,12 +33,18 @@ class CarsCrudController extends AbstractCrudController
 
         
     // }
-    public function preRemove(GenericEvent $event)
+     public function preRemove(GenericEvent $event)
     {
         $car = $event->getSubject();
 
-        if ($car instanceof Cars){
-            $car->removeImage();
+        if ($car instanceof Cars) {
+            // Supprimer l'image du répertoire public/uploads/image
+            $imagePath = $this->getParameter('kernel.project_dir') . '/public/uploads/image/' . $car->getImage();
+
+            // Assurez-vous que le fichier existe avant de le supprimer
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
         }
     }
 

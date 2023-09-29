@@ -112,6 +112,24 @@ class Cars
         $this->image = null;
     }
 
+    
+// public function removeImage()
+//     {
+//         $filesystem = new Filesystem();
+//         $imagePath = '/Users/romain/dev/cours-developpeur/ECF-nov/g-parrot/public/uploads/image' . $this->image;
+//         dd($imagePath);
+//             // Obtenez le chemin absolu du fichier image
+//         $absoluteImagePath = realpath($imagePath);
+
+//         // Assurez-vous que le chemin absolu est défini et que le fichier existe
+//         if ($absoluteImagePath !== false && $filesystem->exists($absoluteImagePath)) {
+//             unlink($absoluteImagePath);
+//         }
+
+//         $this->image = null;
+//     }
+
+
     // /**
     //  * @return Collection<int, Images>
     //  */
