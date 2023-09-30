@@ -1,0 +1,23 @@
+# config/packages/easy_admin.yaml
+
+easy_admin:
+  entities:
+    Avis:
+      class: App\Entity\Avis
+      label: "Avis"
+      list:
+        fields:
+          - "id"
+          - "name"
+          - "commentaire"
+          - "note"
+          - { property: "is_active", type: "toggle" } # Configuration pour le bouton bascule
+        actions:
+          - "edit"
+          - "delete"
+      edit:
+        fields:
+          - "name"
+          - "commentaire"
+          - "note"
+          - { property: "is_active", type: "toggle" } # Configuration pour le bouton bascule
