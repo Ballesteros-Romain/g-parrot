@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\AvisRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+
 
 #[ORM\Entity(repositoryClass: AvisRepository::class)]
 class Avis
@@ -23,9 +26,14 @@ class Avis
     #[ORM\Column]
     private ?int $note = null;
 
+    
     #[ORM\ManyToOne(inversedBy: 'avis')]
     private ?Users $parent = null;
 
+    #[ORM\Column]
+    private ?bool $is_active = null;
+    
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +82,7 @@ class Avis
         return $this;
     }
 
+
     public function getParent(): ?Users
     {
         return $this->parent;
@@ -82,6 +91,18 @@ class Avis
     public function setParent(?Users $parent): static
     {
         $this->parent = $parent;
+
+        return $this;
+    }
+
+    public function isIsActive(): ?bool
+    {
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): static
+    {
+        $this->is_active = $is_active;
 
         return $this;
     }
