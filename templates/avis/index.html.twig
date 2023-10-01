@@ -4,4 +4,14 @@
 
 {% block body %}
         {% include "avis/_form.html.twig" %}
+
+        {% for avis in avis %}
+        {% if avis.isActive() %}
+        <div class="border rounded w-50 mt-5" style="margin-left: 50%; transform: translateX(-50%)">
+                <h5 class="border-bottom p-2">{{avis.getName()}}</h5> 
+                <p style="padding-left: 3%; padding-top: 2%;">{{avis.getCommentaire()}}</p>
+                <p class="ps-4 mt-4 text-decoration-underline">{{avis.getNote()}}/10</p>
+        </div>
+        {% endif %}
+        {% endfor %}
 {% endblock %}
