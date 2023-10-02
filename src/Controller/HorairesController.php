@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class HorairesController extends AbstractController
 {
     #[Route('/horaires', name: 'app_horaires')]
-    public function index(Request $request, EntityManagerInterface $em, HorairesRepository $horairesRepository): Response
+    public function index(HorairesRepository $horairesRepository): Response
     {
 
         $horaires = $horairesRepository->findAll();
-        
-        return $this->render('_partials/_footer.html.twig', [
+        dd($horaires);
+        return $this->render('horaires/index.html.twig', [
             'horaires'=>$horaires,
         ]);
     }
