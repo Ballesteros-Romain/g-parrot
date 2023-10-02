@@ -276,8 +276,12 @@ h3 {
 }
 
 footer p {
-  padding-top: 50px;
   text-align: center;
+}
+
+.clock {
+  color: #fdba3d;
+  padding-top: 50px;
 }
 
 .trait2 {

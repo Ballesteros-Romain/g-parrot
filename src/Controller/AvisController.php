@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Avis;
 use App\Form\AvisFormType;
 use App\Repository\AvisRepository;
+use App\Repository\HorairesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AvisController extends AbstractController
 {
     #[Route('/avis', name: 'app_avis')]
-    public function index(Request $request, EntityManagerInterface $entityManager, AvisRepository $avisRepository): Response
+    public function index(Request $request, HorairesRepository $horairesRepository, EntityManagerInterface $entityManager, AvisRepository $avisRepository): Response
     {
 
         $avisForm = $this->createForm(AvisFormType::class);
@@ -54,6 +55,8 @@ class AvisController extends AbstractController
         return $this->render('avis/index.html.twig', [
             'avisForm' => $avisForm->createView(),
             'avis' =>$avis,
+            'horaires' => $horairesRepository->findAll()
+
             
         ]);
     }

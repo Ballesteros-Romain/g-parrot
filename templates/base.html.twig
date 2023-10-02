@@ -18,11 +18,13 @@
     {% include "_partials/_nav.html.twig" %}
     {% include "_partials/_flash.html.twig" %}
     
-    {% block body %}{% endblock %}
+    {% block body %}
+
+    {% endblock %} 
     {% include "_partials/_footer.html.twig" %}  
     {% block javascript %}
         <script src="{{ asset('assets/js/script.js')}}"></script>
-        {# {% include "_partials/_footer.html.twig" %} #}
+
     {% endblock %}
     </body>
 </html>

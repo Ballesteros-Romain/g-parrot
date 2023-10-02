@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Repository\HorairesRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +26,7 @@ class LoginAunthenticatorAuthenticator extends AbstractLoginFormAuthenticator
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
     }
+
 
     public function authenticate(Request $request): Passport
     {

@@ -278,8 +278,12 @@ h3 {
   //   ========================================== FOOTER ====================================================
 }
 footer p {
-  padding-top: 50px;
+  // padding-top: 50px;
   text-align: center;
+}
+.clock {
+  color: $jaune;
+  padding-top: 50px;
 }
 .trait2 {
   width: 100px;

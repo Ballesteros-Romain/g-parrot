@@ -1,14 +1,19 @@
 <footer>
         <div class="bg-blk footer">
-        {% include "horaires/index.html.twig" %}
-            {# <p>Nos horaires: <br>
-                du mardi au vendredi <br>
-                de 9h à 12h <br> et de <br> 13h à 18h <br>samedi <br>de 10h à 15h</p> #}
+        <div class="clock">
+            {% for horaire in horaires %}
+                <p>{{ horaire.heureMatin }}</p>
+                <p>{{ horaire.heureSoir }}</p>
+                <p>{{ horaire.jour }}</p>
+            {% endfor %}
+        </div>
+        
             <div class="trait2"></div>
             <img src=".{{asset('assets/images/Garage_V.parrot-removebg-preview.png')}}" alt="logo">
+        <div class="clock">
             <p>contactez nous : <br>01 85 66 32 15 <br>contact@vparrot.fr <br>30 rue de la reussite <br>34000
                 <br>montpellier
-                {# <p>{{horaires.heure_matin}}</p> #}
+        </div>
             </p>
         </div>
     </footer>
