@@ -3,10 +3,55 @@
 {% block title %}Véhicules d'occasion{% endblock %}
 
 {% block body %}
-    <h1>Nos voitures</h1>
+    <h2>Nos voitures</h2>
+     <div class="filter">
+            <h2>Filtres de recherche</h2>
+            <div class="filter-row">
+                <label for="classe">Marque :</label>
+                <select id="classe">
+                    <option value="">Toutes les marques</option>
+                    <option value="A">Citroën</option>
+                    <option value="B">Renault</option>
+                    <option value="C">Volkswagen</option>
+                </select>
+            </div>
+            <div class="filter-row">
+                <label for="km">Kilométrage :</label>
+                <select id="km">
+                    <option value="">Tous les kilométrages</option>
+                    <option value="0-50000">0 - 50 000 km</option>
+                    <option value="50000-100000">50 000 - 100 000 km</option>
+                    <option value="100000-150000">100 000 - 150 000 km</option>
+                    <option value="150000+">150 000 km et plus</option>
+                </select>
+            </div>
+
+            <div class="filter-row">
+                <label for="annee">Année :</label>
+                <select id="annee">
+                    <option value="">Toutes les années</option>
+                    <option value="2010-2015">2010 - 2015</option>
+                    <option value="2015-2020">2015 - 2020</option>
+                    <option value="2020+">2020 et plus</option>
+                </select>
+            </div>
+
+            <div class="filter-row">
+                <label for="prix">Prix :</label>
+                <select id="prix">
+                    <option value="">Tous les prix</option>
+                    <option value="0-10000">0 - 10 000 €</option>
+                    <option value="10000-20000">10 000 - 20 000 €</option>
+                    <option value="20000-30000">20 000 - 30 000 €</option>
+                    <option value="30000+">30 000 € et plus</option>
+                </select>
+            </div>
+            <button class="btn3 btn-filter" id="filter-btn">Filtrer</button>
+            <button id="reset-btn" class="btn3">Réinitialiser</button>
+        </div>
     <div class="container">
         {% for car in cars %}
-            <div class="card">
+            <div class="card card-occasion" data-classe="{{ car.getMarque() }}" data-km="{{ car.getKilometre() }}" data-annee="{{ car.getAnnee() }}" data-prix="{{ car.getPrice() }}">
                     <img src="{{ asset('/uploads/image/' ~ car.getImage()) }}" alt="photo de voiture" >
                     <h5>{{ car.getMarque() }}</h5>
                     <p>{{ car.getkilometre() | number_format }} km</p>
