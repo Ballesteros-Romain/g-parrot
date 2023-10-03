@@ -120,6 +120,22 @@ li {
 #scrollToDown {
   color: $jaune;
 }
+.pagination {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+  font-weight: 500;
+  color: $blk;
+}
+.pagination li {
+  padding: 5px;
+}
+.pagination li a {
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: $blk;
+}
 
 @media all and (max-width: 991px) {
   .toggle {
@@ -256,14 +272,20 @@ h3 {
   background: $blc;
   width: 70%;
   margin: auto;
+  &:hover {
+    background: darken($color: #eaeaea, $amount: 0);
+  }
 }
 @media screen and (min-width: 991px) {
   .container {
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
   .card {
     width: 25%;
     height: 100%;
+    margin: 10px;
     & img {
       height: 220px;
       width: 90%;

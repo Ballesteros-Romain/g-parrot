@@ -1,21 +1,11 @@
 //================================== MENU BURGER OUVERT:FERMER======================================
-const toggle = document.querySelector(".toggle ");
+const toggle = document.querySelector(".toggle");
 const body = document.querySelector("body");
 
 toggle.addEventListener("click", function () {
   body.classList.toggle("open");
 });
 
-// ================================= BUTTON CONTACT SCROLL DOWN=========================================
-let scrollToDown = document.getElementById("scrollToDown");
-function scrollDown() {
-  console.log("ok");
-  window.scrollTo({
-    top: 10000,
-    behavior: "smooth",
-  });
-}
-scrollToDown.addEventListener("click", scrollDown);
 // ======================================================= FILTRER LES VOITURES =========================================================
 document.addEventListener("DOMContentLoaded", function () {
   const classeSelect = document.getElementById("classe");
@@ -24,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const prixSelect = document.getElementById("prix");
   const filterButton = document.getElementById("filter-btn");
   const resetButton = document.getElementById("reset-btn");
-  const cards = document.getElementsByClassName("card-occasion");
+  const cards = document.querySelectorAll(".card-occasion"); // Utilisez querySelectorAll pour obtenir une NodeList
 
   filterButton.addEventListener("click", function () {
     const selectedClasse = classeSelect.value;
@@ -73,3 +63,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+//==================================== ADD MESSAGE ON CLICK "JE VEUX CE VEHICULE" ===========================

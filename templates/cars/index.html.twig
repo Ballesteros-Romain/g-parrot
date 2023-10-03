@@ -51,14 +51,17 @@
         </div>
     <div class="container">
         {% for car in cars %}
-            <div class="card card-occasion" data-classe="{{ car.getMarque() }}" data-km="{{ car.getKilometre() }}" data-annee="{{ car.getAnnee() }}" data-prix="{{ car.getPrice() }}">
+        <div class="card card-occasion">
                     <img src="{{ asset('/uploads/image/' ~ car.getImage()) }}" alt="photo de voiture" >
                     <h5>{{ car.getMarque() }}</h5>
                     <p>{{ car.getkilometre() | number_format }} km</p>
                     <p>{{ car.getAnnee() }}</p>
                     <p>{{ car.getPrice() / 100 }} €</p>
-                    <button class="btn btn-card">Je veux ce véhicule</button>
+                    <a href="{{ path('app_formulaire', { marque: car.getMarque(), price: car.getPrice() }) }}" class="btn btn-card">Je veux ce véhicule</a>
             </div>  
         {% endfor %}
+    </div>  
+    <div class="pagination">
+        {{ knp_pagination_render(cars) }}
     </div>
 {% endblock %}
