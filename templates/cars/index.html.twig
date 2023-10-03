@@ -3,5 +3,15 @@
 {% block title %}Véhicules d'occasion{% endblock %}
 
 {% block body %}
-<h1>Véhicules d'occasion</h1>
+    <h1>Véhicules d'occasion</h1>
+    <div class="card">
+        {% for car in cars %}
+            <img src="{{ asset('/uploads/image/' ~ car.getImage()) }}" alt="photo de voiture" >
+            <h5>{{ car.getMarque() }}</h5>
+            <p>{{ car.getkilometre() }}</p>
+            <p>{{ car.getAnnee() }}</p>
+            <p>{{ car.getPrice() / 100 }} €</p>
+            
+        {% endfor %}
+    </div>
 {% endblock %}

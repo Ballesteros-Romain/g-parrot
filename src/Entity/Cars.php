@@ -2,15 +2,19 @@
 
 namespace App\Entity;
 
+use Vich\Uploadable;
+use App\Entity\Images;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CarsRepository;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Filesystem\Filesystem;
 use Doctrine\Common\Collections\ArrayCollection;
-use App\Entity\Images;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CarsRepository::class)]
+#[Vich\Uploadable]
 class Cars
 {
     #[ORM\Id]
@@ -30,8 +34,14 @@ class Cars
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'string', nullable: true)]
     private ?string $image;
+
+    #[vich\UploadableField(mapping: 'image', fileNameProperty: 'image')]
+    private ?file $file = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     // #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Images::class)]
     // private Collection $images;
@@ -101,33 +111,39 @@ class Cars
         return $this->image;
     }
 
-    public function setImage(string $image): static
+    public function setImage(?string $image): static
     {
         $this->image = $image;
 
         return $this;
     }
-       public function removeImage()
+    // public function removeImage()
+    // {
+    //     $this->image = null;
+    // }
+
+    public function setFile(?file $file): self
     {
-        $this->image = null;
+        $this->file = $file;
+        if(null!== $file){
+            $this->updatedAt = new \DateTimeImmutable();
+
+        }
+        return $this;
+    }
+
+    public function getFile(): ?File
+    {
+        return $this->file;
     }
 
     
-// public function removeImage()
-//     {
-//         $filesystem = new Filesystem();
-//         $imagePath = '/Users/romain/dev/cours-developpeur/ECF-nov/g-parrot/public/uploads/image' . $this->image;
-//         dd($imagePath);
-//             // Obtenez le chemin absolu du fichier image
-//         $absoluteImagePath = realpath($imagePath);
 
-//         // Assurez-vous que le chemin absolu est défini et que le fichier existe
-//         if ($absoluteImagePath !== false && $filesystem->exists($absoluteImagePath)) {
-//             unlink($absoluteImagePath);
-//         }
 
-//         $this->image = null;
-//     }
+
+
+
+
 
 
     // /**

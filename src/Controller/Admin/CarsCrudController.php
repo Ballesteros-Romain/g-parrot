@@ -24,29 +24,34 @@ class CarsCrudController extends AbstractCrudController
         return Cars::class;
     }
 
-    // public function configureActions(Actions $actions): Actions
-    // {
-    //     $delete = Action::new('supprimer')
-    //         ->linkToCrudAction('deleteProduct');
-    //     return $actions
-    //         ->add(Crud::PAGE_DETAIL, $delete);
-
-        
-    // }
-     public function preRemove(GenericEvent $event)
+    public function configureActions(Actions $actions): Actions
     {
-        $car = $event->getSubject();
+        // ...
+        
+        // Ajoutez une action personnalisée pour supprimer la voiture
+        $deleteImage = Action::new('removeImage', 'Supprimer l\'image')
+            ->linkToCrudAction('removeImageFile');
 
-        if ($car instanceof Cars) {
-            // Supprimer l'image du répertoire public/uploads/image
-            $imagePath = $this->getParameter('kernel.project_dir') . '/public/uploads/image/' . $car->getImage();
+        return $actions
+            ->add(Crud::PAGE_DETAIL, $deleteImage);
 
-            // Assurez-vous que le fichier existe avant de le supprimer
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
-        }
     }
+        
+
+    // public function preRemove(GenericEvent $event)
+    // {
+    //     $car = $event->getSubject();
+
+    //     if ($car instanceof Cars) {
+    //         // Supprimer l'image du répertoire public/uploads/image
+    //         $imagePath = $this->getParameter('kernel.project_dir') . '/public/uploads/image/' . $car->getImage();
+
+    //         // Assurez-vous que le fichier existe avant de le supprimer
+    //         if (file_exists($imagePath)) {
+    //             unlink($imagePath);
+    //         }
+    //     }
+    // }
 
 
     
