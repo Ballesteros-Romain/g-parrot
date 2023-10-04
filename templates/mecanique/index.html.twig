@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V.parrot - Mecanique{% endblock %}
+
+{% block body %}
+    <main class="main">
+        <img src="{{asset('assets/images/mecanique.jpeg')}}" alt="photo de mecanique" class="p-vehicule-occ">
+        <h2>{{services[4].getName()}}</h2>
+        <div class="trait"></div>
+        <div class="texte">
+            <p>{{sousServices[3].getTexte}}</p>
+        </div>
+        <img src="{{asset('assets/images/mecanicien.jpeg')}}" alt="photo de mecanicien" class="photo-mecanique">
+        <h2>{{services[5].getName()}}</h2>
+        <div class="trait"></div>
+        <div class="texte">
+            <p>{{sousServices[4].getTexte}}</p>
+        </div>
+        <img src="{{asset('assets/images/diag.jpeg')}}" alt="photo de diag électronique" class="photo-mecanique">
+        <h2>{{services[6].getName()}}</h2>
+            <div class="texte">
+            <p>{{sousServices[5].getTexte}}</p>    
+            </div>
+            <a href="{{path('app_formulaire')}}" class="btn btn2" style="margin-left: 45%;">nous contacter</a>
+    </main>
+{% endblock %}

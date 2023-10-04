@@ -67,6 +67,9 @@ li {
   .img-top-pc {
     display: none;
   }
+  .position {
+    display: none;
+  }
   .texte img {
     display: none;
   }
@@ -210,6 +213,7 @@ h2 {
 .texte {
   display: flex;
   margin-top: 60px;
+
   & > p {
     text-justify: auto;
     text-align: center;
@@ -227,13 +231,19 @@ h2 {
   color: $blc;
   @include rounded(3px);
   padding: 5px;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin: auto;
   border: none;
   font-size: larger;
   &:hover {
     background-color: darken($color: $jaune, $amount: 15);
   }
+}
+.position {
+  position: relative;
+  bottom: 100px;
+}
+.center {
+  margin-left: 50%;
 }
 // =============================================== SECTION 2====================================================
 
@@ -243,6 +253,7 @@ h2 {
   margin-top: 100px;
   height: 100%;
   padding-bottom: 80px;
+  padding: 0 30px 80px 30px;
 }
 .container {
   text-align: center;
@@ -262,6 +273,9 @@ h2 {
     width: 90%;
     height: 50%;
     margin: auto;
+  }
+  & a {
+    color: $blk;
   }
 }
 h3 {

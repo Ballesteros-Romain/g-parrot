@@ -2,7 +2,55 @@
 
 {% block title %}Garage V.Parrot{% endblock %}
 {% block body %}
-<h2>{{ services[0].getName() }}</h2>
+        <img src="{{asset('assets/images/images (1).jpeg')}}" alt="photo de voiture" class="img-top-pc">
+        <a href="{{path('app_formulaire')}}" class="btn btn2 position">contactez nous</a> 
+<main class="main">
+        <h2>{{ services[0].getName() }}</h2>
+        <span class="trait"></span>
+        <div class="texte">
+        <p>{{sousServices[1].getTexte}}</p>
+        <img src="{{asset('assets/images/images (2).jpeg')}}" alt="photo voiture">
+        </div>
+
+
+       
+        <section class="bg-blk">
+        <h2>nos prestations</h2>
+        <div class="container">
+                <div class="card">
+                <a href="{{path('app_cars')}}">
+                <img src="{{asset('assets/images/images (2).jpeg')}}" alt="photo de voiture">
+                </a>
+                <div class="card-body">
+                        <h3 class="card-title">vente de véhicules d'occasions</h3>
+                </div>
+                </div>
+
+                <div class="card">
+                <a href="{{path('app_carrosserie')}}"> <img src="{{asset('assets/images/téléchargement (1).jpeg')}}" alt="photo de voiture">
+                        <div class="card-body">
+                        <h3 class="card-title">Carrosserie</h3>
+                        </div>
+                </a>
+                </div>
+
+                <div class="card">
+                <a href="{{path('app_mecanique')}}">
+                <img src="{{asset('assets/images/mecanique.jpeg')}}" alt="photo de voiture">
+                </a>
+                <div class="card-body">
+                        <h3 class="card-title">mécanique</h3>
+                </div>
+                </div>
+
+        </div>
+        </section>
+        <section class="bg-blc">
+                <div class="avis">
+                <a href="{{path('app_avis')}}" class="btn btn2">Votre avis nous interesse</a>
+                <p>Prenez le temps de nous donner une apreciation !</p>
+                </div>
+        </section>
         {% for avis in avis %}
         {% if avis.isActive() %}
         <div class="border rounded w-50 mt-5" style="margin-left: 50%; transform: translateX(-50%)">
@@ -12,4 +60,5 @@
         </div>
         {% endif %}
         {% endfor %}
+</main>
 {% endblock %}

@@ -9,19 +9,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CarrosserieController extends AbstractController
+class MecaniqueController extends AbstractController
 {
-    #[Route('/carrosserie', name: 'app_carrosserie')]
+    #[Route('/mecanique', name: 'app_mecanique')]
     public function index(
-        ServicesRepository $servicesRepository,
         HorairesRepository $horairesRepository,
+        ServicesRepository $servicesRepository,
         SousServicesRepository $sousServicesRepository
-        ): Response
+    ): Response
     {
-        return $this->render('carrosserie/index.html.twig', [
-            'controller_name' => 'CarrosserieController',
-            'services' => $servicesRepository->findAll(),
+        return $this->render('mecanique/index.html.twig', [
+            'controller_name' => 'MecaniqueController',
             'horaires' => $horairesRepository->findAll(),
+            'services'=> $servicesRepository->findAll(),
             'sousServices'=> $sousServicesRepository->findAll()
 
         ]);
