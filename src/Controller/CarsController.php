@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CarsRepository;
 use App\Repository\HorairesRepository;
+use App\Repository\ServicesRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,11 @@ use Knp\Component\Pager\Pagination\PaginationInterface; // Assurez-vous d'import
 class CarsController extends AbstractController
 {
     #[Route('/vehicule', name: 'app_cars')]
-    public function index(HorairesRepository $horairesRepository, CarsRepository $carsRepository, PaginatorInterface $paginatorInterface, Request $request): Response
+    public function index(HorairesRepository $horairesRepository,
+    CarsRepository $carsRepository, 
+    PaginatorInterface $paginatorInterface,
+    ServicesRepository $servicesRepository, 
+    Request $request): Response
     {
         $car = $carsRepository->findAll();
 
@@ -27,7 +32,9 @@ class CarsController extends AbstractController
             'controller_name' => 'CarsController',
             'horaires' => $horairesRepository->findAll(),
             'cars' => $carsRepository->findAll(),
-            'cars' => $pagintation
+            'cars' => $pagintation,
+            'services' => $servicesRepository->findAll()
+
         ]);
     }
 }

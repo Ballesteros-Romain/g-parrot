@@ -2,7 +2,8 @@
 
 {% block title %}Garage V.Parrot{% endblock %}
 {% block body %}
-    {% for avis in avis %}
+<h2>{{ services[0].getName() }}</h2>
+        {% for avis in avis %}
         {% if avis.isActive() %}
         <div class="border rounded w-50 mt-5" style="margin-left: 50%; transform: translateX(-50%)">
                 <h5 class="border-bottom p-2">{{avis.getName()}}</h5> 
