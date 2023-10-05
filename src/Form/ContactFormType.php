@@ -72,10 +72,6 @@ class ContactFormType extends AbstractType
                         'minMessage' => 'Le message doit comporter au moins {{ limit }} caractères.',
                         'maxMessage' => 'Le message ne peut pas dépasser {{ limit }} caractères.',
                     ]),
-                    new Assert\Regex([
-                        'pattern' => '/^[a-zA-Z0-9\s,\'"!?]+$/',
-                        'message' => 'Le message contient des caractères non autorisés.',
-                    ]),
                 ],
             ]);
     }

@@ -18,16 +18,9 @@ class FormulaireController extends AbstractController
     #[Route('/formulaire', name: 'app_formulaire')]
     public function index(HorairesRepository $horairesRepository, Request $request, EntityManagerInterface $em, FormulaireRepository $formulaireRepository): Response
     {
-        $marque = $request->query->get('marque');
-        $price = $request->query->get('price') / 100;
-
-        $message = $marque ? "Bonjour, je vous contacte au sujet de la voiture $marque à " . number_format($price, 2) . " €" : '';
 
         $contactForm = $this->createForm(ContactFormType::class);
 
-        if ($marque && $price) {
-        $message = $marque ? "Bonjour, je vous contacte au sujet de la voiture $marque à " . number_format($price, 2) . " €" : '';   
-    } else {
         $contactForm->handleRequest($request);
         
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
@@ -55,7 +48,60 @@ class FormulaireController extends AbstractController
                 $this->addFlash('danger', 'Une erreur est survenue : ' . $e->getMessage());
             }
         }
+    
+
+        return $this->render('formulaire/index.html.twig', [
+            'controller_name' => 'FormulaireController',
+            'horaires' => $horairesRepository->findAll(),
+            'contactForm' => $contactForm->createView(),
+            'contact' => $formulaireRepository->findAll(),
+            // 'message' => $message  // Transmettez le message au template Twig
+        ]);
     }
+
+    #[Route('/formulaire/from-card', name: 'app_formulaire_from_card')]
+public function redirectToContactFormFromCard(HorairesRepository $horairesRepository, Request $request, EntityManagerInterface $em, FormulaireRepository $formulaireRepository): Response
+{
+    $marque = $request->query->get('marque');
+    $price = $request->query->get('price') / 100;
+
+    $message = $marque ? "Bonjour, je vous contacte au sujet de la voiture $marque à " . number_format($price, 0, ',', '.') . " €" : '';
+
+    $contactForm = $this->createForm(ContactFormType::class);
+
+    $contactForm->get('message')->setData($message);
+
+
+    
+
+        $contactForm->handleRequest($request);
+        
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $formData = $contactForm->getData();
+            $email = $formData->getEmail();
+            $name = $formData->getName();
+            $surname = $formData->getSurname();
+            $tel = $formData->getTel();
+            $message = $formData->getMessage();
+            
+            $contact = new Formulaire();
+            $contact->setEmail($email);
+            $contact->setName($name);
+            $contact->setSurname($surname);
+            $contact->setTel($tel);
+            $contact->setMessage($message);
+            
+            try {
+                $em->persist($contact);
+                $em->flush();
+                
+                $this->addFlash('success', 'Nous avons pris en compte votre demande');
+                return $this->redirectToRoute('home_');
+            } catch (\Exception $e) {
+                $this->addFlash('danger', 'Une erreur est survenue : ' . $e->getMessage());
+            }
+        }
+    
 
         return $this->render('formulaire/index.html.twig', [
             'controller_name' => 'FormulaireController',
@@ -64,5 +110,5 @@ class FormulaireController extends AbstractController
             'contact' => $formulaireRepository->findAll(),
             'message' => $message  // Transmettez le message au template Twig
         ]);
-    }
+}
 }
