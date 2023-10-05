@@ -47,8 +47,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Accueil', 'fa fa-home', 'home_');
         yield MenuItem::linkToCrud('Voiture', 'fa-solid fa-car', Cars::class);
         yield MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Avis::class);
-        yield MenuItem::linkToCrud('formulaire', 'fa-brands fa-wpforms', Formulaire::class);
-        yield MenuItem::linkToCrud('horaires', 'fa-solid fa-clock', Horaires::class);
+        yield MenuItem::linkToCrud('Messages', 'fa-brands fa-wpforms', Formulaire::class);
+        yield MenuItem::linkToCrud('Horaires', 'fa-solid fa-clock', Horaires::class);
         // yield MenuItem::linkToCrud('roles', 'fa-solid fa-user', Roles::class);
         yield MenuItem::linkToCrud('Services', 'fa-solid fa-briefcase', Services::class);
         yield MenuItem::linkToCrud('SousServices', 'fa-solid fa-briefcase', SousServices::class);

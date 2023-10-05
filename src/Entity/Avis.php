@@ -31,7 +31,7 @@ class Avis
     private ?Users $parent = null;
 
     #[ORM\Column]
-    private ?bool $is_active = null;
+    private ?bool $is_active = false;
     
     
     public function getId(): ?int
@@ -95,7 +95,7 @@ class Avis
         return $this;
     }
 
-    public function isIsActive(): ?bool
+    public function getIsActive(): ?bool
     {
         return $this->is_active;
     }

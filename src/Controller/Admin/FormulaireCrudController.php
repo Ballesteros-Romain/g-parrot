@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Formulaire;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -24,11 +25,17 @@ class FormulaireCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             EmailField::new('email'),
-            TextField::new('name'),
-            TextField::new('surname'),
+            TextField::new('name', 'prénom'),
+            TextField::new('surname', 'nom'),
             TelephoneField::new('tel'),
             TextareaField::new('message'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+        ->setPageTitle('index', 'Messages');
     }
     
 }

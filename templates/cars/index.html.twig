@@ -57,7 +57,11 @@
                     <p>{{ car.getkilometre() | number_format }} km</p>
                     <p>{{ car.getAnnee() }}</p>
                     <p>{{ car.getPrice() / 100 }} €</p>
+                    {# <a href="{{ path('app_formulaire', { marque: car.getMarque(), price: car.getPrice() }) }}" class="btn btn-card">Je veux ce véhicule</a>
+                    #}
+                    {# <a href="{{ path('app_formulaire', { marque: car.getMarque(), price: car.getPrice(), fromCard: true }) }}" class="btn btn-card">Je veux ce véhicule</a> #}
                     <a href="{{ path('app_formulaire', { marque: car.getMarque(), price: car.getPrice() }) }}" class="btn btn-card">Je veux ce véhicule</a>
+
             </div>  
         {% endfor %}
     </div>  
