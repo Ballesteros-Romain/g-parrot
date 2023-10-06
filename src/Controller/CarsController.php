@@ -6,10 +6,11 @@ use App\Repository\CarsRepository;
 use App\Repository\HorairesRepository;
 use App\Repository\ServicesRepository;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Knp\Component\Pager\Pagination\PaginationInterface; // Assurez-vous d'importer cette classe
 
 
@@ -26,13 +27,13 @@ class CarsController extends AbstractController
     {
         $car = $carsRepository->findAll();
 
-        $pagintation = $paginatorInterface->paginate($car, $request->query->getInt('page', 1), 4);
+        // $pagintation = $paginatorInterface->paginate($car, $request->query->getInt('page', 1), 4);
 
         return $this->render('cars/index.html.twig', [
             'controller_name' => 'CarsController',
             'horaires' => $horairesRepository->findAll(),
             'cars' => $carsRepository->findAll(),
-            'cars' => $pagintation,
+            // 'cars' => $pagintation,
             'services' => $servicesRepository->findAll()
 
         ]);

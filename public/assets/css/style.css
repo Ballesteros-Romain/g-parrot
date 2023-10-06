@@ -455,9 +455,9 @@ label {
 }
 
 #km,
-#classe,
+#marque,
 #annee,
-#prix {
+#price {
   border: 1px solid #fdba3d;
 }
 

@@ -4,51 +4,29 @@
 
 {% block body %}
     <h2>{{services[2].getName()}}</h2>
-     <div class="filter">
-            <h2>Filtres de recherche</h2>
-            <div class="filter-row">
-                <label for="classe">Marque :</label>
-                <select id="classe">
-                    <option value="">Toutes les marques</option>
-                    <option value="A">Citroën</option>
-                    <option value="B">Renault</option>
-                    <option value="C">Volkswagen</option>
-                </select>
-            </div>
-            <div class="filter-row">
-                <label for="km">Kilométrage :</label>
-                <select id="km">
-                    <option value="">Tous les kilométrages</option>
-                    <option value="0-50000">0 - 50 000 km</option>
-                    <option value="50000-100000">50 000 - 100 000 km</option>
-                    <option value="100000-150000">100 000 - 150 000 km</option>
-                    <option value="150000+">150 000 km et plus</option>
-                </select>
-            </div>
-
-            <div class="filter-row">
-                <label for="annee">Année :</label>
-                <select id="annee">
-                    <option value="">Toutes les années</option>
-                    <option value="2010-2015">2010 - 2015</option>
-                    <option value="2015-2020">2015 - 2020</option>
-                    <option value="2020+">2020 et plus</option>
-                </select>
-            </div>
-
-            <div class="filter-row">
-                <label for="prix">Prix :</label>
-                <select id="prix">
-                    <option value="">Tous les prix</option>
-                    <option value="0-10000">0 - 10 000 €</option>
-                    <option value="10000-20000">10 000 - 20 000 €</option>
-                    <option value="20000-30000">20 000 - 30 000 €</option>
-                    <option value="30000+">30 000 € et plus</option>
-                </select>
-            </div>
-            <button class="btn3 btn-filter" id="filter-btn">Filtrer</button>
-            <button id="reset-btn" class="btn3">Réinitialiser</button>
+    <div class="filter">
+    <h2>Filtres de recherche</h2>
+    <form id="filter-form">
+        <div class="filter-row">
+            <label for="marque">Marque :</label>
+            <input type="text" name="marque" id="marque">
         </div>
+        <div class="filter-row">
+            <label for="kilometre">Kilométrage :</label>
+            <input type="number" name="kilometre" id="kilometre">
+        </div>
+        <div class="filter-row">
+            <label for="annee">Année :</label>
+            <input type="number" name="annee" id="annee">
+        </div>
+        <div class="filter-row">
+            <label for="price">Prix :</label>
+            <input type="number" name="price" id="price">
+        </div>
+        <button type="submit" class="btn3 btn-filter" id="filter-btn">Filtrer</button>
+        <button type="reset" id="reset-btn" class="btn3">Réinitialiser</button>
+    </form>
+</div>
     <div class="container">
         {% for car in cars %}
         <div class="card card-occasion">
@@ -57,15 +35,12 @@
                     <p>{{ car.getkilometre() | number_format }} km</p>
                     <p>{{ car.getAnnee() }}</p>
                     <p>{{ car.getPrice() / 100 }} €</p>
-                    {# <a href="{{ path('app_formulaire', { marque: car.getMarque(), price: car.getPrice() }) }}" class="btn btn-card">Je veux ce véhicule</a>
-                    #}
-                    {# <a href="{{ path('app_formulaire', { marque: car.getMarque(), price: car.getPrice(), fromCard: true }) }}" class="btn btn-card">Je veux ce véhicule</a> #}
                     <a href="{{ path('app_formulaire_from_card', { marque: car.getMarque(), price: car.getPrice() }) }}" class="btn btn-card">Je veux ce véhicule</a>
 
             </div>  
         {% endfor %}
     </div>  
-    <div class="pagination">
+    {# <div class="pagination">
         {{ knp_pagination_render(cars) }}
-    </div>
+    </div> #}
 {% endblock %}
