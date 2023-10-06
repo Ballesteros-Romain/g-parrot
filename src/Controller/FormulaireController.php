@@ -96,7 +96,7 @@ public function redirectToContactFormFromCard(HorairesRepository $horairesReposi
                 $em->flush();
                 
                 $this->addFlash('success', 'Nous avons pris en compte votre demande');
-                return $this->redirectToRoute('home_');
+                return $this->redirectToRoute('home');
             } catch (\Exception $e) {
                 $this->addFlash('danger', 'Une erreur est survenue : ' . $e->getMessage());
             }
