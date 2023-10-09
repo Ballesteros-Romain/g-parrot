@@ -3,7 +3,7 @@
 {% block title %}Véhicules d'occasion{% endblock %}
 
 {% block body %}
-    <h2>{{ controller_name }}</h2>
+    <h2>{{ services[2].getName()  }}</h2>
     <div class="filter">
         <h2>Filtres de recherche</h2>
         <form id="filter-form">
@@ -12,7 +12,7 @@
                 <input type="text" name="marque" id="marque">
             </div>
             <div class="filter-row">
-                <label for="kilometre">Kilométrage :</label>
+                <label for="kilometre">Kilométrage max :</label>
                 <input type="number" name="kilometre" id="kilometre">
             </div>
             <div class="filter-row">
@@ -39,7 +39,12 @@
         </div>
         {% endfor %}
     </div>
-    <div class="pagination">
+    {# <div class="pagination">
         {{ knp_pagination_render(cars) }}
-    </div>
+    </div> #}
+{% endblock %}
+{% block javascript %}
+<script>
+    const imageFolder = "{{asset('/uploads/image/')}}";
+</script>
 {% endblock %}

@@ -121,19 +121,22 @@ filterForm.addEventListener("submit", async (e) => {
   const price = document.querySelector("#price").value;
 
   try {
-    const response = await fetch("/get_all_cars", {
+    const response = await fetch("get_cars", {
       method: "POST",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
-      body: `marque=${marque}&kilometre=${kilometre}&annee=${annee}&price=${price}`,
+      body: JSON.stringify({
+        marque: marque,
+        kilometre: kilometre,
+        annee: annee,
+        price: price,
+      }),
     });
-    console.log(response);
+
     if (response.ok) {
       const filteredData = await response.json();
 
-      console.log(filteredData);
-      //Supprimez le contenu existant dans la zone d'affichage des voitures
       carsContainer.innerHTML = "";
 
       // Parcourez les données filtrées et générez du contenu HTML pour chaque voiture
@@ -143,15 +146,13 @@ filterForm.addEventListener("submit", async (e) => {
 
         // Affichez les données du véhicule (assurez-vous qu'elles correspondent à la structure de votre JSON)
         carCard.innerHTML = `
-          <img src="${car.image}" alt="photo de voiture">
+          <img src="${imageFolder}${car.image}" alt="photo de voiture">
           <h5>${car.marque}</h5>
           <p>Kilométrage: ${car.kilometre} km</p>
           <p>Année: ${car.annee}</p>
           <p>Prix: ${car.price / 100} €</p>
         `;
-
         carsContainer.appendChild(carCard); // Ajoutez la carte de voiture à la zone d'affichage
-        // console.log(carsContainer);
       });
     } else {
       console.error("La requête a échoué avec le statut :", response.status);
@@ -159,4 +160,12 @@ filterForm.addEventListener("submit", async (e) => {
   } catch (error) {
     console.error("Une erreur s'est produite :", error);
   }
+});
+const resetButton = document.querySelector("#reset-btn");
+resetButton.addEventListener("click", function () {
+  document.querySelector("#marque").value = "";
+  document.querySelector("#kilometre").value = "";
+  document.querySelector("#annee").value = "";
+  document.querySelector("#price").value = "";
+  document.querySelector("#filter-btn").click();
 });

@@ -27,34 +27,31 @@ class CarsRepository extends ServiceEntityRepository
 public function findByFilters($marque = null, $kilometre = null, $annee = null, $price = null)
 {
     $qb = $this->createQueryBuilder('c');
-    $query = $qb->getQuery();
-    // if ($marque !== null) {
-    //     $qb->andWhere('c.marque = :marque')
-    //        ->setParameter('marque', $marque);
-    // }
+    
+    if (!empty($marque)) {
+        $qb->andWhere('c.marque = :marque')
+        ->setParameter('marque', $marque);
+    }
 
-    // if ($kilometre !== null) {
-    //     $qb->andWhere('c.kilometre <= :kilometre')
-    //        ->setParameter('kilometre', $kilometre);
-    // }
+    if (!empty($kilometre)) {
+        $qb->andWhere('c.kilometre <= :kilometre')
+        ->setParameter('kilometre', $kilometre);
+    }
 
-    // if ($annee !== null) {
-    //     $qb->andWhere('c.annee = :annee')
-    //        ->setParameter('annee', $annee);
-    // }
+    if (!empty($annee)) {
+        $qb->andWhere('c.annee = :annee')
+        ->setParameter('annee', $annee);
+    }
 
-    // if ($price !== null) {
-    //     $qb->andWhere('c.price <= :price')
-    //        ->setParameter('price', $price);
-    // }
-
-    // return $qb->getQuery()->getResult();
-    $qb->select('c')
-    ->from('App:Cars','c')
-    ->orderBy('c.marque', 'ASC');
-    $qb = $query->getResult();
-    return $qb;
+    if (!empty($price)) {
+        $qb->andWhere('c.price <= :price')
+        ->setParameter('price', $price);
+    }
+    
+    
+        return $qb->getQuery()->execute();
 }
+
 
 
     
