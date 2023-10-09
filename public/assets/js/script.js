@@ -121,19 +121,19 @@ filterForm.addEventListener("submit", async (e) => {
   const price = document.querySelector("#price").value;
 
   try {
-    const response = await fetch("/cars/filter", {
+    const response = await fetch("/get_all_cars", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: `marque=${marque}&kilometre=${kilometre}&annee=${annee}&price=${price}`,
     });
-
+    console.log(response);
     if (response.ok) {
       const filteredData = await response.json();
-      console.log(filteredData);
 
-      // Supprimez le contenu existant dans la zone d'affichage des voitures
+      console.log(filteredData);
+      //Supprimez le contenu existant dans la zone d'affichage des voitures
       carsContainer.innerHTML = "";
 
       // Parcourez les données filtrées et générez du contenu HTML pour chaque voiture
@@ -151,6 +151,7 @@ filterForm.addEventListener("submit", async (e) => {
         `;
 
         carsContainer.appendChild(carCard); // Ajoutez la carte de voiture à la zone d'affichage
+        // console.log(carsContainer);
       });
     } else {
       console.error("La requête a échoué avec le statut :", response.status);
