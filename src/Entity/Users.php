@@ -41,14 +41,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Horaires::class)]
     private Collection $horaires;
 
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Roles::class)]
-    private Collection $select_roles;
+    // #[ORM\OneToMany(mappedBy: 'parent', targetEntity: Roles::class)]
+    // private Collection $select_roles;
 
     public function __construct()
     {
         $this->avis = new ArrayCollection();
         $this->horaires = new ArrayCollection();
-        $this->select_roles = new ArrayCollection();
+        // $this->select_roles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,33 +195,33 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Roles>
-     */
-    public function getSelectRoles(): Collection
-    {
-        return $this->select_roles;
-    }
+    // /**
+    //  * @return Collection<int, Roles>
+    //  */
+    // public function getSelectRoles(): Collection
+    // {
+    //     return $this->select_roles;
+    // }
 
-    public function addSelectRole(Roles $selectRole): static
-    {
-        if (!$this->select_roles->contains($selectRole)) {
-            $this->select_roles->add($selectRole);
-            $selectRole->setParent($this);
-        }
+    // public function addSelectRole(Roles $selectRole): static
+    // {
+    //     if (!$this->select_roles->contains($selectRole)) {
+    //         $this->select_roles->add($selectRole);
+    //         $selectRole->setParent($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeSelectRole(Roles $selectRole): static
-    {
-        if ($this->select_roles->removeElement($selectRole)) {
-            // set the owning side to null (unless already changed)
-            if ($selectRole->getParent() === $this) {
-                $selectRole->setParent(null);
-            }
-        }
+    // public function removeSelectRole(Roles $selectRole): static
+    // {
+    //     if ($this->select_roles->removeElement($selectRole)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($selectRole->getParent() === $this) {
+    //             $selectRole->setParent(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
