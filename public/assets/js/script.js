@@ -151,7 +151,9 @@ filterForm.addEventListener("submit", async (e) => {
           <p>Kilométrage: ${car.kilometre} km</p>
           <p>Année: ${car.annee}</p>
           <p>Prix: ${car.price / 100} €</p>
+          <a href="${car.url}" class="btn btn-card">Je veux ce véhicule</a>
         `;
+
         carsContainer.appendChild(carCard); // Ajoutez la carte de voiture à la zone d'affichage
       });
     } else {

@@ -60,6 +60,10 @@ class CarsController extends AbstractController
                 'annee' => $cars->getAnnee(),
                 'price' => $cars->getPrice(),
                 'image'=> $cars->getImage(),
+                'url' => $this->generateUrl('app_formulaire_from_card', [
+                    'marque' => $cars->getMarque(),
+                    'price' => $cars->getPrice(),
+                ])
             ];
         }
 

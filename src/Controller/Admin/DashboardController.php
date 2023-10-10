@@ -47,14 +47,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Accueil', 'fa fa-home', 'home_');
         yield MenuItem::linkToCrud('Voiture', 'fa-solid fa-car', Cars::class);
         yield MenuItem::linkToCrud('Avis', 'fa-solid fa-comment', Avis::class);
-        yield MenuItem::linkToCrud('Messages', 'fa-brands fa-wpforms', Formulaire::class);
-        yield MenuItem::linkToCrud('Horaires', 'fa-solid fa-clock', Horaires::class);
-        // yield MenuItem::linkToCrud('roles', 'fa-solid fa-user', Roles::class);
-        yield MenuItem::linkToCrud('Services', 'fa-solid fa-briefcase', Services::class);
-        yield MenuItem::linkToCrud('SousServices', 'fa-solid fa-briefcase', SousServices::class);
-        // yield MenuItem::linkToCrud('Users', 'fa-solid fa-users', Users::class);
+        yield MenuItem::linkToCrud('Messages', 'fa-brands fa-wpforms', Formulaire::class); 
     
         if ($this->isGranted('ROLE_ADMIN')) {
+            yield MenuItem::linkToCrud('Titres', 'fa-solid fa-briefcase', Services::class);
+            yield MenuItem::linkToCrud('Textes', 'fa-solid fa-briefcase', SousServices::class);
+            yield MenuItem::linkToCrud('Horaires', 'fa-solid fa-clock', Horaires::class);
             yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-users', Users::class);
 
         }
