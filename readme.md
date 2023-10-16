@@ -12,6 +12,8 @@ cree un fichier a la racine du projet avec la commande : touch '.env.local'
 
 Ouvrir se ficher dans votre editeur de code et copier la ligne suivante en remplacant id et mdp: DATABASE_URL="mysql://id:mdp@127.0.0.1:8889/g-parrot?serverVersion=8.0.32&charset=utf8mb4" par votre root vers votre BDD et votre mot de passe.
 
+taper dans le terminal : php bin/console doctrine:database:create g-parrot
+
 pour creer les tables de la base de données taper dans le terminal : php bin/console doctrine:migrations:migrate
 
 # LANCER LE SERVEUR
