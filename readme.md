@@ -25,3 +25,5 @@ pour lancer le serveur taper dans le terminal : php bin/console server:run
 Un serveur Web (Apache, Nginx, etc.)
 PHP 8.0 ou supérieur
 MySQL 8.0 ou supérieur
+
+# FIN
