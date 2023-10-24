@@ -20,12 +20,12 @@ final class Version20230930131906 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        // $this->addSql('ALTER TABLE avis DROP is_active');
+        $this->addSql('ALTER TABLE avis DROP is_active');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        // $this->addSql('ALTER TABLE avis ADD is_active TINYINT(1) DEFAULT 0');
+        $this->addSql('ALTER TABLE avis ADD is_active TINYINT(1) DEFAULT 0');
     }
 }
