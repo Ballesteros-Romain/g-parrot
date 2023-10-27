@@ -13,7 +13,6 @@ window.addEventListener("scroll", function () {
   if (scrollLeft > 0) {
     window.scrollTo({
       left: 0,
-      top: 0,
     });
   }
 });
@@ -23,8 +22,7 @@ window.addEventListener("scroll", function () {
 
   if (scrollRight > 0) {
     window.scrollTo({
-      left: 0,
-      top: 0,
+      right: 0,
     });
   }
 });
