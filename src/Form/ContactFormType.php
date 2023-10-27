@@ -60,10 +60,10 @@ class ContactFormType extends AbstractType
                         'pattern' => '/^[0-9\s]+$/',
                         'message' => 'Le numéro de téléphone ne peut contenir que des chiffres et des espaces.',
                     ]),
-                    new Assert\Length([
-                        'min' => 10,
-                        'message' => 'Le numéro doit contenir 10 chiffres'
-                    ])
+                    // new Assert\Length([
+                    //     'min' => 10,
+                    //     'message' => 'Le numéro doit contenir 10 chiffres'
+                    // ])
                 ],
             ])
             ->add('message', TextareaType::class, [
