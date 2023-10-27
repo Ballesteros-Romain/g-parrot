@@ -4,9 +4,9 @@ html {
 }
 
 body {
-  width: 100vh;
   padding: 0;
   margin: 0;
+  width: auto;
   box-sizing: border-box;
   font-family: "Julius Sans One", sans-serif;
 }
