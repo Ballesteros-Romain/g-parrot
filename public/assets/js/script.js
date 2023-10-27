@@ -6,6 +6,20 @@ toggle.addEventListener("click", function () {
   body.classList.toggle("open");
 });
 
+//========================= NO SCROLL X ========================================
+window.addEventListener("scroll", function () {
+  // Obtenez la position horizontale du défilement
+  var scrollLeft = window.scrollX;
+
+  // Si la position horizontale du défilement est supérieure à 0, bloquez le défilement horizontal
+  if (scrollLeft > 0) {
+    window.scrollTo({
+      left: 0,
+      top: 0,
+    });
+  }
+});
+
 // ======================================================= FILTRER LES VOITURES =========================================================
 
 const filterForm = document.querySelector("#filter-form");

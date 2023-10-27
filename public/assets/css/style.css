@@ -198,6 +198,10 @@ li {
     color: white;
   }
 }
+main {
+  width: 100%;
+}
+
 h2 {
   color: #fdba3d;
   text-align: center;
