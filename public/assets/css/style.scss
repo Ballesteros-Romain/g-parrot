@@ -7,11 +7,13 @@ $blk: black;
   border-radius: $radius;
 }
 @import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap");
-
-body {
+html {
   overflow-x: hidden;
+}
+body {
+  // overflow-x: hidden;
   padding: 0;
-  margin: auto;
+  margin: 0;
   box-sizing: border-box;
   font-family: "Julius Sans One", sans-serif;
 }
