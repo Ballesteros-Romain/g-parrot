@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
+use Webmozart\Assert\Assert as AssertAssert;
 
 class ContactFormType extends AbstractType
 {
@@ -59,6 +60,10 @@ class ContactFormType extends AbstractType
                         'pattern' => '/^[0-9\s]+$/',
                         'message' => 'Le numéro de téléphone ne peut contenir que des chiffres et des espaces.',
                     ]),
+                    new Assert\Length([
+                        'min' => 10,
+                        'message' => 'Le numéro doit contenir 10 chiffres'
+                    ])
                 ],
             ])
             ->add('message', TextareaType::class, [
