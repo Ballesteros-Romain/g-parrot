@@ -3,11 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\SousServices;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class SousServicesCrudController extends AbstractCrudController
 {
@@ -24,6 +25,12 @@ class SousServicesCrudController extends AbstractCrudController
             TextField::new('name'),
             TextareaField::new('texte')
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+        ->setPageTitle('index', 'Textes');
     }
     
 }
