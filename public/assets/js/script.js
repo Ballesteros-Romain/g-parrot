@@ -31,6 +31,7 @@ window.addEventListener("scroll", function () {
 
 const filterForm = document.querySelector("#filter-form");
 const carsContainer = document.querySelector("#cars-container");
+const pagination = document.querySelector(".pagination");
 
 filterForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -58,7 +59,6 @@ filterForm.addEventListener("submit", async (e) => {
       const filteredData = await response.json();
 
       carsContainer.innerHTML = "";
-
       filteredData.forEach((car) => {
         const carCard = document.createElement("div");
         carCard.classList.add("card", "card-occasion");
@@ -71,8 +71,8 @@ filterForm.addEventListener("submit", async (e) => {
           <p>Prix: ${car.price / 100} €</p>
           <a href="${car.url}" class="btn btn-card">Je veux ce véhicule</a>
         `;
-
         carsContainer.appendChild(carCard);
+        pagination.style.display = "none";
       });
     } else {
       console.error("La requête a échoué avec le statut :", response.status);
@@ -83,9 +83,10 @@ filterForm.addEventListener("submit", async (e) => {
 });
 const resetButton = document.querySelector("#reset-btn");
 resetButton.addEventListener("click", function () {
-  document.querySelector("#marque").value = "";
-  document.querySelector("#kilometre").value = "";
-  document.querySelector("#annee").value = "";
-  document.querySelector("#price").value = "";
-  document.querySelector("#filter-btn").click();
+  // document.querySelector("#marque").value = "";
+  // document.querySelector("#kilometre").value = "";
+  // document.querySelector("#annee").value = "";
+  // document.querySelector("#price").value = "";
+  // document.querySelector("#filter-btn").click();
+  window.location.replace("/vehicule");
 });
