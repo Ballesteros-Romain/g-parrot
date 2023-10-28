@@ -32,9 +32,9 @@
         <div class="card card-occasion">
             <img src="{{ asset('/uploads/image/' ~ car.getImage()) }}" alt="photo de voiture">
             <h5>{{ car.getMarque() }}</h5>
-            <p>{{ car.getKilometre() | number_format }} km</p>
-            <p>{{ car.getAnnee() }}</p>
-            <p>{{ car.getPrice() / 100 }} €</p>
+            <p>Kilométrage : {{ car.getKilometre() | number_format }} km</p>
+            <p>Année : {{ car.getAnnee() }}</p>
+            <p>Prix : {{ car.getPrice() / 100 }} €</p>
             <a href="{{ path('app_formulaire_from_card', { marque: car.getMarque(), price: car.getPrice() }) }}" class="btn btn-card">Je veux ce véhicule</a>
         </div>
         {% endfor %}

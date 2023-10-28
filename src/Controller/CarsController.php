@@ -49,7 +49,7 @@ class CarsController extends AbstractController
         $annee = $jsonData['annee'];
         $price = $jsonData['price'];
 
-        $filteredCars = $carsRepository->findByFilters($marque, $kilometre, $annee, $price); 
+        $filteredCars = $carsRepository->findByFilters($marque, $kilometre, $annee, $price *100); 
 
         $filteredData = [];
         foreach ($filteredCars as $cars) {
