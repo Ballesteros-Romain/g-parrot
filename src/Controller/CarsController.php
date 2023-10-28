@@ -27,13 +27,13 @@ class CarsController extends AbstractController
     {
         $car = $carsRepository->findAll();
 
-        // $pagintation = $paginatorInterface->paginate($car, $request->query->getInt('page', 1), 6);
+        $pagintation = $paginatorInterface->paginate($car, $request->query->getInt('page', 1), 6);
 
         return $this->render('cars/index.html.twig', [
             'controller_name' => 'CarsController',
             'horaires' => $horairesRepository->findAll(),
             'cars' => $carsRepository->findAll(),
-            // 'cars' => $pagintation,
+            'cars' => $pagintation,
             'services' => $servicesRepository->findAll()
 
         ]);
