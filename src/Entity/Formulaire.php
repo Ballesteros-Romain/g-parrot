@@ -24,7 +24,7 @@ class Formulaire
     private ?string $surname = null;
 
     #[ORM\Column]
-    private ?int $tel = null;
+    private ?string $tel = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
@@ -77,12 +77,12 @@ class Formulaire
         return $this;
     }
 
-    public function getTel(): ?int
+    public function getTel(): ?string
     {
         return $this->tel;
     }
 
-    public function setTel(int $tel): static
+    public function setTel(string $tel): static
     {
         $this->tel = $tel;
 

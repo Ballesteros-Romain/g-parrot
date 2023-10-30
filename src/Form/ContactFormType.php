@@ -51,13 +51,13 @@ class ContactFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('tel', NumberType::class, [
+            ->add('tel', TextType::class, [
                 'constraints' => [
                     new Assert\NotBlank([
                         'message' => 'Le numéro de téléphone ne peut pas être vide.',
                     ]),
                     new Assert\Regex([
-                        'pattern' => '/^[0-9\s]+$/',
+                        'pattern' => '/^\+?[0-9]{10,14}$/',
                         'message' => 'Le numéro de téléphone ne peut contenir que des chiffres et des espaces.',
                     ]),
                     new Assert\Length([

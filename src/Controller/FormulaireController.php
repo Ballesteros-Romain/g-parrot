@@ -30,7 +30,7 @@ class FormulaireController extends AbstractController
             $surname = $formData->getSurname();
             $tel = $formData->getTel();
             $message = $formData->getMessage();
-            
+
             $contact = new Formulaire();
             $contact->setEmail($email);
             $contact->setName($name);
@@ -55,7 +55,7 @@ class FormulaireController extends AbstractController
             'horaires' => $horairesRepository->findAll(),
             'contactForm' => $contactForm->createView(),
             'contact' => $formulaireRepository->findAll(),
-            // 'message' => $message  // Transmettez le message au template Twig
+            // 'message' => $message 
         ]);
     }
 
@@ -96,7 +96,7 @@ public function redirectToContactFormFromCard(HorairesRepository $horairesReposi
                 $em->flush();
                 
                 $this->addFlash('success', 'Nous avons pris en compte votre demande');
-                return $this->redirectToRoute('home');
+                return $this->redirectToRoute('home_');
             } catch (\Exception $e) {
                 $this->addFlash('danger', 'Une erreur est survenue : ' . $e->getMessage());
             }
