@@ -33,8 +33,10 @@ class CarsCrudController extends AbstractCrudController
             ->linkToCrudAction('removeImageFile');
 
         return $actions
-            ->add(Crud::PAGE_DETAIL, $deleteImage);
-
+            ->add(Crud::PAGE_DETAIL, $deleteImage)
+            ->update(Crud::PAGE_INDEX, Action::NEW, function (Action $action) {
+                return $action->setLabel('Ajouter une voiture');
+            });
     }
         
 
