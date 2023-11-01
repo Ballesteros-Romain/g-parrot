@@ -5,3 +5,9 @@ knp_paginator:
     sort_field_name: sort # Le nom du paramètre de requête utilisé pour le tri
     sort_direction_name: direction # Le nom du paramètre de requête utilisé pour la direction de tri
     distinct: true # Définissez-le sur true si vous avez besoin de pagination distincte (pour DISTINCT queries)
+    filter_field_name: filterField # filter field query parameter name
+    filter_value_name: filterValue # filter value query parameter name
+  template:
+    pagination: "@KnpPaginator/Pagination/twitter_bootstrap_v5_pagination.html.twig" # sliding pagination controls template
+    sortable: "@KnpPaginator/Pagination/sortable_link.html.twig" # sort link template
+    filtration: "@KnpPaginator/Pagination/filtration.html.twig"

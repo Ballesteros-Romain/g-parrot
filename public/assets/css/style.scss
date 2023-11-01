@@ -129,24 +129,13 @@ li {
 #scrollToDown {
   color: $jaune;
 }
-.pagination {
-  margin-left: 50%;
-  transform: translateX(-50%);
-  margin-top: 20px;
-  font-weight: 500;
-  color: $blk;
-  font-size: 1.3em;
+a.page-link {
+  color: $jaune;
 }
-.pagination li {
-  padding: 5px;
+.active > .page-link {
+  background: $jaune;
+  border-color: $jaune;
 }
-.pagination li a {
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  color: $blk;
-}
-
 @media all and (max-width: 991px) {
   .toggle {
     display: block;

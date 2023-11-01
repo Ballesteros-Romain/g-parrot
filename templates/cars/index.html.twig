@@ -27,6 +27,7 @@
             <button type="reset" id="reset-btn" class="btn3">Réinitialiser</button>
         </form>
     </div>
+        <h5 class="text-center">Nombres de voitures : {{ cars.getTotalItemCount}}</h5>
     <div class="container" id="cars-container">
         {% for car in cars %}
         <div class="card card-occasion">
@@ -39,9 +40,9 @@
         </div>
         {% endfor %}
     </div>
-    <div class="pagination">
-        {{ knp_pagination_render(cars) }}
-    </div>
+    <ul class="d-flex justify-content-center pagination-custom mt-5">
+        {{knp_pagination_render(cars, '_partials/_pagination.html.twig')}}
+    </ul>
 {% endblock %}
 {% block javascript %}
 <script>

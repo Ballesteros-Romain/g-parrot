@@ -128,24 +128,13 @@ li {
   color: #fdba3d;
 }
 
-.pagination {
-  margin-left: 50%;
-  transform: translateX(-50%);
-  margin-top: 20px;
-  font-weight: 500;
-  color: black;
-  font-size: 1.3em;
+a.page-link {
+  color: #fdba3d;
 }
 
-.pagination li {
-  padding: 5px;
-}
-
-.pagination li a {
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  color: black;
+.active > .page-link {
+  background: #fdba3d;
+  border-color: #fdba3d;
 }
 
 @media all and (max-width: 991px) {
