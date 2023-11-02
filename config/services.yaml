@@ -19,6 +19,7 @@ services:
       - "../src/DependencyInjection/"
       - "../src/Entity/"
       - "../src/Kernel.php"
+  Knp\Bundle\PaginatorBundle\Helper\Processor: "@knp_paginator.helper.processor"
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

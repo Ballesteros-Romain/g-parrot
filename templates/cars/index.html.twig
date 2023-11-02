@@ -9,20 +9,20 @@
         <form id="filter-form" type="submit">
             <div class="filter-row">
                 <label for="marque">Marque :</label>
-                <input type="text" name="marque" id="marque">
+                <input type="text" name="marque" id="marque" {% if marque is not empty %}value={{marque}}{% endif %}
+                >
             </div>
             <div class="filter-row">
                 <label for="kilometre">Kilométrage max :</label>
-                <input type="number" name="kilometre" id="kilometre">
+                <input type="number" name="kilometre" id="kilometre" {% if kilometre is not empty %}value={{kilometre}}{% endif %}>
             </div>
             <div class="filter-row">
                 <label for="annee">Année :</label>
-                <input type="number" name="annee" id="annee">
+                <input type="number" name="annee" id="annee" {% if annee is not empty %}value={{annee}}{% endif %}>
             </div>
             <div class="filter-row">
                 <label for="price">Prix :</label>
-                <input type="number" name="price" id="price">
-                <input type="hidden" name="page" id="page" value="1">
+                <input type="number" name="price" id="price" {% if price is not empty %}value={{price}}{% endif %}>
             </div>
             <button type="submit" class="btn3 btn-filter" id="filter-btn">Filtrer</button>
             <button type="reset" id="reset-btn" class="btn3">Réinitialiser</button>

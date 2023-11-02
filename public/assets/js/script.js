@@ -66,7 +66,7 @@ filterForm.addEventListener("submit", async (e) => {
         h.textContent = "aucun résultat";
         carsContainer.appendChild(h);
       } else {
-        filteredData.forEach((car) => {
+        filteredData.cars.forEach((car) => {
           const carCard = document.createElement("div");
           carCard.classList.add("card", "card-occasion");
 
@@ -79,9 +79,10 @@ filterForm.addEventListener("submit", async (e) => {
           <a href="${car.url}" class="btn btn-card">Je veux ce véhicule</a>
           `;
           carsContainer.appendChild(carCard);
-          pagination.style.display = "none";
           console.log("la requete a fonctionné");
         });
+        document.querySelector("#pagination").innerHTML =
+          filteredData.pagination;
       }
     } else {
       console.error("La requête a échoué avec le statut :", response.status);
