@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Cars;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @extends ServiceEntityRepository<Cars>
@@ -16,7 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CarsRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginatorInterface)
     {
         parent::__construct($registry, Cars::class);
     }
@@ -45,13 +46,12 @@ public function findByFilters($marque = null, $kilometre = null, $annee = null, 
 
     if (!empty($price)) {
         $qb->andWhere('c.price <= :price')
-        ->setParameter('price', $price);
+        ->setParameter('price', $price * 100);
     }
     
     
         return $qb->getQuery()->execute();
 }
-
 
 
     

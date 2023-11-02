@@ -31,7 +31,7 @@ window.addEventListener("scroll", function () {
 
 const filterForm = document.querySelector("#filter-form");
 const carsContainer = document.querySelector("#cars-container");
-const pagination = document.querySelector(".pagination");
+const pagination = document.querySelector("#pagination");
 
 filterForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -42,38 +42,47 @@ filterForm.addEventListener("submit", async (e) => {
   const price = document.querySelector("#price").value;
 
   try {
-    const response = await fetch("get_cars", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        marque: marque,
-        kilometre: kilometre,
-        annee: annee,
-        price: price,
-      }),
-    });
+    const url = `get_cars?marque=${marque}&kilometre=${kilometre}&annee=${annee}&price=${price}`;
+    const response = await fetch(url);
+    //   const response = await fetch("get_cars", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       marque: marque,
+    //       kilometre: kilometre,
+    //       annee: annee,
+    //       price: price,
+    //     }),
+    //   });
 
     if (response.ok) {
       const filteredData = await response.json();
 
       carsContainer.innerHTML = "";
-      filteredData.forEach((car) => {
-        const carCard = document.createElement("div");
-        carCard.classList.add("card", "card-occasion");
+      if (filteredData.length === 0) {
+        const h = document.createElement("h5");
+        h.textContent = "aucun résultat";
+        carsContainer.appendChild(h);
+      } else {
+        filteredData.forEach((car) => {
+          const carCard = document.createElement("div");
+          carCard.classList.add("card", "card-occasion");
 
-        carCard.innerHTML = `
+          carCard.innerHTML = `
           <img src="${imageFolder}${car.image}" alt="photo de voiture">
           <h5>${car.marque}</h5>
           <p>Kilométrage: ${car.kilometre} km</p>
           <p>Année: ${car.annee}</p>
           <p>Prix: ${car.price / 100} €</p>
           <a href="${car.url}" class="btn btn-card">Je veux ce véhicule</a>
-        `;
-        carsContainer.appendChild(carCard);
-        pagination.style.display = "none";
-      });
+          `;
+          carsContainer.appendChild(carCard);
+          pagination.style.display = "none";
+          console.log("la requete a fonctionné");
+        });
+      }
     } else {
       console.error("La requête a échoué avec le statut :", response.status);
     }
@@ -81,12 +90,8 @@ filterForm.addEventListener("submit", async (e) => {
     console.error("Une erreur s'est produite :", error);
   }
 });
+
 const resetButton = document.querySelector("#reset-btn");
 resetButton.addEventListener("click", function () {
-  // document.querySelector("#marque").value = "";
-  // document.querySelector("#kilometre").value = "";
-  // document.querySelector("#annee").value = "";
-  // document.querySelector("#price").value = "";
-  // document.querySelector("#filter-btn").click();
   window.location.replace("/vehicule");
 });

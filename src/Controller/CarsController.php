@@ -27,8 +27,9 @@ class CarsController extends AbstractController
     {
         $car = $carsRepository->findAll();
 
-
         $car = $paginatorInterface->paginate($car, $request->query->getInt('page', 1), 6);
+
+        
         
         return $this->render('cars/index.html.twig', [
             'controller_name' => 'CarsController',
@@ -39,18 +40,27 @@ class CarsController extends AbstractController
 
         ]);
     }
+    /**
+     * Récupère la liste des voitures filtrées
+     *
+     * @param CarsRepository $carsRepository
+     * @param Request $request
+     * @param PaginatorInterface $paginatorInterface
+     *
+     * @return JsonResponse
+     */
 
     #[Route('/get_cars', name: 'get_cars')]
-    public function getAllCars(CarsRepository $carsRepository, Request $request): JsonResponse
+    public function getAllCars(CarsRepository $carsRepository, Request $request, PaginatorInterface $paginatorInterface): JsonResponse
     {
-        $jsonData = json_decode($request->getContent(), true);
+        $marque = $request->query->get('marque');
+    $kilometre = $request->query->get('kilometre');
+    $annee = $request->query->get('annee');
+    $price = $request->query->get('price');
+    
+        $filteredCars = $carsRepository->findByFilters($marque, $kilometre, $annee, $price); 
+        // $filteredCars = $paginatorInterface->paginate($filteredCars, $request->query->getInt('page', 1), 6);
 
-        $marque = $jsonData['marque'];
-        $kilometre = $jsonData['kilometre'];
-        $annee = $jsonData['annee'];
-        $price = $jsonData['price'];
-
-        $filteredCars = $carsRepository->findByFilters($marque, $kilometre, $annee, $price * 100); 
 
         $filteredData = [];
         foreach ($filteredCars as $cars) {

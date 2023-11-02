@@ -6,6 +6,36 @@
                 <p>{{ horaire.heureSoir }}</p>
                 <p>{{ horaire.jour }}</p>
             {% endfor %}
+            <a data-bs-toggle="modal" data-bs-target="#exampleModal1" style="text-decoration: underline; text-underline-offset: 5px; cursor: pointer; color: #fdba3d" class="d-flex justify-content-center">
+            Mentions légales</a>
+
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Mentions légales</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>éditeur du site</h6>
+        <p style="color: black;">nom du propriétaire : ballesteros romain <br>
+        adresse : 40 chemin du clos dou fan 30190 castelnau valence <br>
+        téléphone : 06.86.11.60.16 <br>
+        mail : romain.ballesteros@gmail.com</p>
+        <h6>hébergeur du site</h6>
+        <p style="color: black;"> hébergeur : heroku.com</p>
+        <h6>propriété intellectuelle</h6>
+        <p style="color: black;">Le contenu de ce site (textes, images, vidéos, etc.) est protégé par les droits de propriété intellectuelle. Toute reproduction ou utilisation sans autorisation préalable est interdite.</p>
+        <h6>données personelles</h6>
+        <p style="color: black;">Conformément à la loi Informatique et Libertés du 6 janvier 1978, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Pour exercer ce droit, veuillez nous contacter par e-mail à l'adresse suivante : romain.ballesteros@gmail.com</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn2" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
         </div>
         
             <div class="trait2"></div>
@@ -13,7 +43,36 @@
         <div class="clock">
             <p>contactez nous : <br>01 85 66 32 15 <br>contact@vparrot.fr <br>30 rue de la reussite <br>34000
                 <br>montpellier
-        </div>
             </p>
+            <!-- Button trigger modal -->
+<a data-bs-toggle="modal" data-bs-target="#exampleModal" style="text-decoration: underline; text-underline-offset: 5px; cursor: pointer;">
+Politique des cookies
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Politique des cookies</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>utilisation</h6>
+        <p style="color: black;">ce site utilise des cookies poour améliorer votre expérience utilisateur. ces cookies sont essentiels pour la gestion de vos droits et privilèges au sein de notre sysème.</p>
+        <h6>les cookies qu'est ce que c'est  ?</h6>
+        <p style="color: black;">un cookie est un petit fichier stocker sur votre ordinateur ou smartphone par le navigateur web que vous utilisez. ces fichiers nous aident à vous identifier en tant qu'utilisateur et à personnaliser votre expérience en fonction de vos préférences.</p>
+        <h6>comment nous les utilisons ?</h6>
+        <p style="color: black;">nous les utilisons uiquement pour la gestion de vos droit en tant qu'utilisateur. ils ne collectent pas d'informations personelles et ne sont pas utilisés à des fins de marketing ou de suivi.</p>
+        <h6>votre consentement</h6>
+        <p style="color: black;">en continuant à utiliser ce site, vous consentez à l'utilisation de ces cookies.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn2" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
         </div>
     </footer>

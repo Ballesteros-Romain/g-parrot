@@ -6,7 +6,7 @@
     <h2>{{ services[2].getName()  }}</h2>
     <div class="filter">
         <h2>Filtres de recherche</h2>
-        <form id="filter-form">
+        <form id="filter-form" type="submit">
             <div class="filter-row">
                 <label for="marque">Marque :</label>
                 <input type="text" name="marque" id="marque">
@@ -22,12 +22,12 @@
             <div class="filter-row">
                 <label for="price">Prix :</label>
                 <input type="number" name="price" id="price">
+                <input type="hidden" name="page" id="page" value="1">
             </div>
             <button type="submit" class="btn3 btn-filter" id="filter-btn">Filtrer</button>
             <button type="reset" id="reset-btn" class="btn3">Réinitialiser</button>
         </form>
     </div>
-        <h5 class="text-center">Nombres de voitures : {{ cars.getTotalItemCount}}</h5>
     <div class="container" id="cars-container">
         {% for car in cars %}
         <div class="card card-occasion">
@@ -40,7 +40,7 @@
         </div>
         {% endfor %}
     </div>
-    <ul class="d-flex justify-content-center pagination-custom mt-5">
+    <ul class="d-flex justify-content-center pagination-custom mt-5" id="pagination">
         {{knp_pagination_render(cars, '_partials/_pagination.html.twig')}}
     </ul>
 {% endblock %}
@@ -48,4 +48,8 @@
 <script>
     const imageFolder = "{{asset('/uploads/image/')}}";
 </script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+  crossorigin="anonymous"></script>
 {% endblock %}
