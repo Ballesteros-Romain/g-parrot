@@ -311,13 +311,27 @@ h3 {
   margin-top: 70px;
 }
 .avis a {
-  text-decoration: underline;
   color: black;
 }
 .avis p {
   margin-top: 100px;
 }
 
+.key {
+  animation: key 2s ease infinite;
+}
+
+@keyframes key {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 footer p {
   text-align: center;
 }
