@@ -44,18 +44,6 @@ filterForm.addEventListener("submit", async (e) => {
   try {
     const url = `get_cars?marque=${marque}&kilometre=${kilometre}&annee=${annee}&price=${price}`;
     const response = await fetch(url);
-    //   const response = await fetch("get_cars", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       marque: marque,
-    //       kilometre: kilometre,
-    //       annee: annee,
-    //       price: price,
-    //     }),
-    //   });
 
     if (response.ok) {
       const filteredData = await response.json();
